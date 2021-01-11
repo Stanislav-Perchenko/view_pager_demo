@@ -11,7 +11,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<View>(R.id.btn_option_1).setOnClickListener { _ -> startActivity(Intent(this, VPager2TabsActivity::class.java)) }
-        findViewById<View>(R.id.btn_option_2).setOnClickListener { _ -> startActivity(Intent(this, VPager2DotsActivity::class.java)) }
+        findViewById<View>(R.id.btn_option_1).setOnClickListener { v -> startOption(v.id) }
+        findViewById<View>(R.id.btn_option_2).setOnClickListener { v -> startOption(v.id) }
+        findViewById<View>(R.id.btn_option_3).setOnClickListener { v -> startOption(v.id) }
+
+    }
+
+    private fun startOption(actionId: Int) {
+        when(actionId) {
+            R.id.btn_option_1 -> Intent(this, VPager2TabsActivity::class.java)
+            R.id.btn_option_2 -> Intent(this, VPager2DotsActivity::class.java).putExtra(VPager2DotsActivity.ARG_USE_MOVING_DOT, false)
+            R.id.btn_option_3 -> Intent(this, VPager2DotsActivity::class.java).putExtra(VPager2DotsActivity.ARG_USE_MOVING_DOT, true)
+            else -> null
+        }?.also {
+            startActivity(it)
+        }
     }
 }
