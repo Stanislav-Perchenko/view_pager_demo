@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ViewPager Demo</string>
+
+    <string name="activity_title_vpager2_tabs">ViewPager2 with Tabs</string>
+    <string name="activity_title_vpager2_dots">ViewPager2 with Dots</string>
+</resources>
