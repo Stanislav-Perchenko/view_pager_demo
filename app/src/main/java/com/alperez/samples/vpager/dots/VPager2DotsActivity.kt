@@ -22,7 +22,9 @@ class VPager2DotsActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vpager2_dots)
+
+        val argMove: Boolean = intent?.getBooleanExtra(ARG_USE_MOVING_DOT, false) ?: false
+        setContentView(if (argMove) R.layout.activity_vpager2_dots_moving else R.layout.activity_vpager2_dots_switched)
         vPager = findViewById<ViewPager2>(R.id.v_pager).let {
             it.adapter = DemoPagerAdapter()
             it
